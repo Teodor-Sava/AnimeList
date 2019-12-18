@@ -3,10 +3,13 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
 import { ApiService, IApiService } from './services/api.service';
+import { HeaderComponent } from './components/header/header.component';
+import { IAuthenticationStateService, AuthenticationStateService } from './services/authentication-state.service';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [HeaderComponent],
+  exports: [HttpClientModule, HeaderComponent],
   imports: [
     CommonModule,
     HttpClientModule,
@@ -15,6 +18,10 @@ import { ApiService, IApiService } from './services/api.service';
     {
       provide: IApiService,
       useClass: ApiService
+    },
+    {
+      provide: IAuthenticationStateService,
+      useClass: AuthenticationStateService
     }
   ]
 })

@@ -1,1 +1,11 @@
-<p>login works!</p>
+<form [formGroup]="userLoginForm">
+    <div [ngClass]="{'error': !userLoginForm.get('username').valid}">
+        <label>Username</label>
+        <input type="text" formControlName="username">
+    </div>
+    <div>
+        <label>Password</label>
+        <input type="text" formControlName="password">
+    </div>
+    {{f.username.errors | json}}
+</form>
